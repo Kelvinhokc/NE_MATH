@@ -1,0 +1,46 @@
+<script src="js/iframeDivPosition.js"></script>
+<script src="../iframeDiv/loadIframeToDiv.js"></script>
+
+<script src="../iframeDiv/stepIframeToDiv.js"></script>
+
+soundManager.setup({
+	// where to find the SWF files, if needed
+	url: '',
+	onready: function() {
+		iframe1_createSound();
+	}
+});
+//create sound
+function iframe1_createSound(){
+	for(var i=1; i < 14; i++) {
+		var soundNo = pad(i, 2);
+		soundManager.createSound({id: 'C0'+soundNo, url: 'voice/C0'+soundNo+'.mp3', autoLoad: true});
+	}
+}
+-------------------------------------------------------
+//create sound
+soundManager.setup({
+	// where to find the SWF files, if needed
+	url: '',
+	onready: function() {
+		createSound();
+	}
+});
+
+function createSound(){
+	for(var i=1; i < 12; i++) {
+		var soundNo = pad(i, 2);
+		soundManager.createSound({id: 'C0'+soundNo, url: 'voice/C0'+soundNo+'.mp3', autoLoad: true});
+	}
+}
+---------------------------------------------------------
+<body onload ="initData()">
+<div class="show_pic share_cs" name="div_show" style="height:66px; width:357px; left:445px; top:100px;"><img src="img/421_52_1.png"></div>
+<div class="show_pic share_cs" name="div_show" style="height:56px; width:349px; left:220px; top:442px;"><img src="img/421_52_2.png"></div>
+<div class="show_pic share_cs" name="div_show" style="height:33px; width:83px; left:680px; top:530px;"><img src="img/421_52_3.png"></div>
+<div class="show_pic share_cs" name="div_show" style="height:33px; width:126px; left:325px; top:560px;"><img src="img/421_52_4.png"></div>
+
+<div class="share_cs pic_btn" name="div_pic" style="height:49px; width:55px; left:380px; top:170px;"></div>
+<div class="share_cs pic_btn" name="div_pic" style="height:49px; width:55px; left:55px; top:490px;"></div>
+<div class="share_cs pic_btn" name="div_pic" style="height:49px; width:55px; left:515px; top:555px;"></div>
+<div class="share_cs pic_btn" name="div_pic" style="height:49px; width:55px; left:75px; top:570px;"></div>

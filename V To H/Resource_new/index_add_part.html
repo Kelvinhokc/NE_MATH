@@ -1,0 +1,27 @@
+#iframe_div {
+	position: absolute;
+	top: 420px;
+	left: -91px;
+}
+
+<div id="iframe_div">
+	<iframe src="iframe/animate.html" frameborder="0" height="500" width="1200"></iframe> 
+</div>
+
+<script>
+/*Refresh Iframe when click ANSWER*/
+
+// Add after showPrompt(this) @ html
+freshIframe($('div#iframe_div iframe'));
+
+// Add index.html
+function freshIframe(obj){
+	url = obj.attr('src');
+	obj.attr('src', '');
+	obj.attr('src', url);
+}
+	
+// Add animate.html: play()
+/*Add class(iframe_ans) of answer label tag*/
+parent.$('.iframe_ans').hide();
+</script>	

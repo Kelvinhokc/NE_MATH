@@ -1,0 +1,182 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>2014版小數NATB211(教師版)</title>
+<link rel="stylesheet" href="../css/themes/base/jquery.ui.all.css">
+<script src="../js/jquery-1.7.2.js"></script><script src="../js/ui/jquery.ui.core.js"></script><script src="../js/ui/jquery.ui.widget.js"></script><script src="../js/ui/jquery.ui.mouse.js"></script><script src="../js/ui/jquery.ui.draggable.js"></script><script src="../js/ui/jquery.ui.droppable.js"></script><script src="../js/ui/jquery.ui.sortable.js"></script><script src="../js/jquery.upload-1.0.2.js"></script><script src="../js/ui/jquery.ui.touch-punch.min.js"></script><script src="../js/json2.js"></script><style>
+	html,body {
+		margin: 0px;
+		padding: 0px;
+		overflow: ;
+		background-color: #ffffff;
+		height: 1375px;
+		width: 1024px;
+		border: 0px none;
+		font-family: ;
+		font-size:pt;
+		line-height:pt;
+		letter-spacing:0px;
+		
+		  	background-image:url('PAGE_0023.jpg');
+		  
+		  	background-repeat:no-repeat;
+		  
+	}
+	input[type='text'],input[type='number'],select,textarea {background-color:;border: px solid ;padding:0;}
+	.input_answer {font-size:pt;font-family: ;}
+	.correct_answer {color:red;font-size:12pt}
+	.draggable { padding: 5px; margin: 0px 0px 0px 0px ; border:1px dashed transparent;}
+	.sub_draggable { margin: 0px 0px 0px 0px ; border:1px dashed transparent;}
+	.ui-widget-header p, .ui-widget-content p { margin: 0; }
+	[hide='1'] { display:none }
+	.matching {cursor:hand}
+	.matching:hover {color:blue;}
+	.matching_active {color:blue;}
+	.matching_line {
+		position: absolute;
+		height: 0px;
+		border-width: 2px 0px 0px 0px;
+		border-style: solid;
+		border-color: blue;
+		z-index:101;
+	}
+	.matching_right_line {
+		position: absolute;
+		height: 0px;
+		border-width: 1px 0px 0px 0px;
+		border-style: solid;
+		border-color: red;
+		z-index:101;
+	}
+	.matching_line:hover {border-width: 4px 0px 0px 0px;}
+	.drag {line-height: inherit; color:blue;border:1px solid transparent;z-index:102;-ms-touch-action:none;}
+	.drag_active {line-height: inherit; border:2px solid red;z-index:102;}
+	.drop {z-index:101;background-color:;}
+	.drop_grid{border:1px solid gray;}
+	.drop_underline{border-bottom:1px solid gray;}
+	.drop_clear{border:1px solid transparent;}
+	.answer_sort { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+	.answer_sort li { margin: 5px; padding: 5px; width: 100%; }
+	.answer_sort2 { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+	.answer_sort2 li { margin: 3px 3px 3px 3px; padding: 5px; float: left; text-align: center; }
+	.MC3 { padding:5px; border:3px solid transparent;}
+	.MC3_unselect { padding:5px; border:3px solid transparent;}
+	.MC3[answered='0']:hover {
+		border:3px solid blue;
+		cursor:hand;
+		padding:5px;
+		-moz-border-radius:125px;
+		-webkit-border-radius:125px;
+		-khtml-border-radius:125px;
+		border-radius:125px;
+	}
+	.MC3_select {
+		border:3px solid blue;
+		cursor:hand;
+		padding:5px;
+		-moz-border-radius:125px;
+		-webkit-border-radius:125px;
+		-khtml-border-radius:125px;
+		border-radius:125px;
+	}
+	.MMC3 { padding:5px; border:3px solid transparent;}
+	.MMC3_unselect { padding:5px; border:3px solid transparent;}
+	.MMC3[answered='0']:hover {
+		border:3px solid blue;
+		cursor:hand;
+		padding:5px;
+		-moz-border-radius:125px;
+		-webkit-border-radius:125px;
+		-khtml-border-radius:125px;
+		border-radius:125px;
+	}
+	.MMC3_select {
+		border:3px solid blue;
+		cursor:hand;
+		padding:5px;
+		-moz-border-radius:125px;
+		-webkit-border-radius:125px;
+		-khtml-border-radius:125px;
+		border-radius:125px;
+	}
+	</style>
+<script>
+
+	var res_id=-1443;
+	var res_idx=25;
+	var xml_path;
+	
+	var user_type=3;
+	
+	var setting_real_time_show_correct=0;
+	var setting_show_correct_answer=0;
+	var setting_redo_times=0;
+	var setting_font_size='' || '14';
+	var setting_line_height='' || '14';
+	var setting_background_image='PAGE_0023.jpg' || 'none';
+	var setting_background_repeat='no-repeat' || 'no-repeat';
+	var setting_submit_button_image='';
+	var setting_font_family='' || '"細明體","Arial"';
+	var setting_inputbox_background_color='' || 'inherit';
+	var setting_inputbox_border_color='' || 'inherit';
+	</script><script src="js/answer_json.js"></script><script src="../js/meic_offline.js"></script><script src="../js/meic_engine.js"></script>
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" style="z-index:0;line-height:0px;width:1024px;height:1375px;min-height:;padding:0;margin:0" id="page" class="page_border"><tr><td valign="top"></td></tr></table>
+<div class="resizable draggable ui-widget-content main_object" index="" style="z-index:99;
+			position:absolute;
+			top:278.999875px;
+			left:76.0000512px;
+			width:55.000000512px;
+			height:64.999996875px
+			" zindex="1"><div type="IMAGE" template="1" teacher_version=""><img src="ICON_ANI.png" class="image"></div></div>
+<div class="resizable draggable ui-widget-content main_object" index="" style="z-index:99;
+			position:absolute;
+			top:476.999875px;
+			left:6.00000512px;
+			width:82px;
+			height:64.999996875px
+			" zindex="2"><div type="IMAGE" template="1" teacher_version=""><a href="ETOOL01/index.html" target="_blank"><img src="ICON_ETOOL.png" class="image" border="0"></a></div></div>
+<div class="resizable draggable ui-widget-content main_object" index="" style="z-index:99;
+			position:absolute;
+			top:821.99975px;
+			left:817.999872px;
+			width:82px;
+			height:64.999996875px
+			" zindex="3"><div type="IMAGE" template="1" teacher_version=""><a href="ETOOL01/index.html" target="_blank"><img src="ICON_ETOOL.png" class="image" border="0"></a></div></div>
+<div class="resizable draggable ui-widget-content main_object" index="" style="z-index:99;
+			position:absolute;
+			top:1180.00025px;
+			left:6.00000512px;
+			width:82px;
+			height:64.999996875px
+			" zindex="4"><div type="IMAGE" template="1" teacher_version=""><a href="ETOOL02/index.html" target="_blank"><img src="ICON_ETOOL.png" class="image" border="0"></a></div></div>
+<div class="resizable draggable ui-widget-content main_object" index="" style="z-index:1;
+			position:absolute;
+			top:131.99998875px;
+			left:109.99999744px;
+			width:280px;
+			height:53.000002px
+			" zindex="1"><div type="PROMPT" template="3" teacher_version=""><fieldset style="
+			border:1px solid transparent;padding-top:7px;padding-left:14px;
+			" background-color="">
+<span class="prompt_image" style="white-space:nowrap;position:absolute;top:-35.99996375px;left:-90.00004864px"><img src="ICON_ANS.png" class="image" onclick="show_prompt(this)" style="cursor: pointer;"></span><label class="text" style="
+				display:none;
+				"><img src="ba7b8b914683849b0147149740fc3963_new.png"/></label>
+</fieldset></div></div>
+<div class="resizable draggable ui-widget-content main_object" index="" style="z-index:1;
+			position:absolute;
+			top:885.000025px;
+			left:99px;
+			width:852.9999872px;
+			height:372.99999px
+			" zindex="1"><div type="PROMPT" template="3" teacher_version=""><fieldset style="
+			border:1px solid transparent;padding-top:7px;padding-left:14px;
+			" background-color="">
+<span class="prompt_image" style="white-space:nowrap;position:absolute;top:-38.9996500000001px;left:-79.0000512px"><img src="ICON_ANS.png" class="image" onclick="show_prompt(this)" style="cursor: pointer;"></span><label class="text" style="
+				display:none;
+				"><img src="ba7b8b914683849b014714974124396b_new.png"/></label>
+</fieldset></div></div>
+</body>
+</html>

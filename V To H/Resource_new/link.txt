@@ -1,0 +1,2 @@
+MEIC Login page:
+http://meic.cyberbook.com.hk/apps/meic/engine/

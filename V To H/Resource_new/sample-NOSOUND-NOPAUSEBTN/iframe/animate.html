@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.10.2.js"></script>
+ 
+<style> 
+#iframe1_btn_stop {display:none}
+
+.iframe1_animate_div {
+display: none;
+}
+
+div.iframe1_animate_div div {
+	position: absolute;
+	top 0px;
+	left: 0px;
+	z-index: 200;
+	display:none;
+}
+
+#iframe1_animate_block {
+	position: relative;
+}
+#iframe1_action_btn {
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+}
+
+#iframe1_story_board {
+	position: absolute;
+	top: 0px;
+	left: 90px;
+	z-index: 0;
+}
+#iframe1_animate_1 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#iframe1_step_1 {
+	position:relative;
+}
+div.iframe1_animate_div {
+	position:relative;
+}
+</style>
+
+<script>
+//function for filling zero
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+
+function iframe1_play(){
+	$('#iframe1_btn_play').hide();
+	$('#iframe1_fix_image').hide();	
+	$('#iframe1_btn_stop').show();
+	iframe1_action_1();
+}
+function copy_gif_show(fileDivObj){
+	var timestamp = new Date().getTime();
+	fileObj = fileDivObj.find('img');
+	link = fileObj.attr('link');
+	fileObj.attr('src', link+'?'+timestamp).show();
+	fileDivObj.show();
+	
+	//run code
+	//copy_gif_show($( '#step_1_1'));
+}
+function iframe1_stopAnimation(){
+	$('#iframe1_btn_resume').hide();
+	$('#iframe1_btn_stop').hide();
+	$("#iframe1_story_board").html(window.aniData);
+	iframe1_replay();
+}
+
+//step 1
+/***** New ****
+if $('#step_1_3') fadeIn after
+$('#step_1_3').css('opacity', 1);
+example
+$('#step_1_3').fadeIn(1000, function(){
+	$('#step_1_3').css('opacity', 1);
+});
+****** New *****/
+function iframe1_action_1() {	
+
+	$( '#iframe1_step_1_1, #iframe1_step_1_2, #iframe1_step_1_3' ).show();
+	$( '#iframe1_group_1' ).show();
+	$( '#iframe1_group_1' ).animate({ display: 'block' }, 4000, function(){
+		iframe1_action_2();
+	});
+}
+function iframe1_action_20() {
+	iframe1_replay();
+}
+function iframe1_replay() {
+	$( '#iframe1_fix_image' ).show();
+	$('#iframe1_btn_play').show();
+	$('#iframe1_btn_stop').hide();
+	$('div').show();
+	$('div#iframe1_animate_1  div.iframe1_animate_div div').each(function (){
+		$(this).attr('style', '');
+	});
+	$('.iframe1_animate_div').css('display', 'none');
+}
+</script>
+</head>
+
+<body>
+
+<div id="iframe1_animate_block">
+
+	<div id="iframe1_action_btn">
+		<a onclick="iframe1_play()" id="iframe1_btn_play"><img class="image" src="images/ICON_ANI.png"></a>
+		<br>
+        <a onclick="iframe1_stopAnimation()" id="iframe1_btn_stop"><img class="image" src="images/ICON_STOP.png"></a>
+	</div>
+
+	<div id="iframe1_story_board">
+	
+		<div id="iframe1_fix_image">
+			<img src="images/image1.png">
+		</div>
+		
+		<div id="iframe1_animate_1" class="iframe1_ele">
+			<div id="iframe1_group_1" class="iframe1_ele iframe1_animate_div">
+				<div id="iframe1_step_1_1" class="iframe1_ele"><img src="images/png1.png"></div>
+				<div id="iframe1_step_1_11" class="iframe1_ele"><img src="images/gif2.gif" link="images/gif2.gif"></div>
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+</body>
+</html>
